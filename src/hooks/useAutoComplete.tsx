@@ -82,7 +82,8 @@ export const useAutoComplete = (
   };
 
   const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    setBothInputs(e.target.innerText);
+    const target = e.target as HTMLDivElement;
+    setBothInputs(target.innerText);
 
     resetSuggestionList();
   };
