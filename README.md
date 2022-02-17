@@ -3,6 +3,7 @@
 로직 테스트를 위해 만들어 사용한 간단한 검색창입니다. 필요하다면 가져다 사용하세요!
 
 **검색 로직 수정 방법**
+- pages/Main/index.tsx에 있는 AutoComplete 컴포넌트에 원하는 mock data를 주고 테스트하면 됩니다. 
 - AutoComplete 컴포넌트는 기본적으로 아래와 같은 형식의 데이터를 받도록 설정되어 있습니다.
  ```javascript
  // types/searchData.ts
