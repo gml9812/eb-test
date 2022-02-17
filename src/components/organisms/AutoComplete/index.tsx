@@ -1,11 +1,12 @@
 import React from 'react';
 import { SuggestionsList } from 'components';
 import { useAutoComplete } from 'hooks/useAutoComplete';
+import { SearchData } from 'types/searchData';
 
 import * as S from './style';
 
 interface IAutoCompleteProps {
-  suggestions: Array<string>;
+  suggestions: SearchData[];
 }
 
 export const AutoComplete = ({ suggestions }: IAutoCompleteProps) => {

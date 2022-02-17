@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { SearchData } from 'types/searchData';
 
 export const useAutoComplete = (
-  suggestions: Array<string>,
+  suggestions: SearchData[],
 ): [
   Array<string>,
   number,
@@ -18,9 +19,8 @@ export const useAutoComplete = (
   const [inputTyped, setInputTyped] = useState('');
   const [inputAutoCompleted, setInputAutoCompleted] = useState('');
 
-  // 필터링 로직. 현재는 겹치는 글자가 있을 경우 나타나도록 되어 있다.
-  const filterLogic = (userInput: string, suggestion: string) => {
-    return suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1;
+  const filterLogic = (userInput: string, suggestion: SearchData) => {
+    return suggestion.text.toLowerCase().indexOf(userInput.toLowerCase()) > -1;
   };
 
   const resetSuggestionList = () => {
@@ -47,10 +47,9 @@ export const useAutoComplete = (
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const userInput = e.target.value;
 
-    // 유저가 입력한 내용과 관련 있는 항목만 자동 완성 창에 남긴다.
-    const possibleSuggestions = suggestions.filter((suggestion) =>
-      filterLogic(userInput, suggestion),
-    );
+    const possibleSuggestions = suggestions
+      .filter((suggestion) => filterLogic(userInput, suggestion))
+      .map((suggestion) => suggestion.text);
 
     setBothInputs(e.target.value);
 
@@ -60,7 +59,6 @@ export const useAutoComplete = (
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // 위 아래 화살표 누르면 focus한 검색 항목 바뀜.
     if (!showSuggestions) {
       if (e.key === 'ArrowDown' && filteredSuggestions.length > 0) {
         setShowSuggestions(true);

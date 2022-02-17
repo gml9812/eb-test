@@ -1,22 +1,40 @@
 import React from 'react';
 import { AutoComplete } from 'components';
 
-import * as S from './style';
-
 export const Main = () => {
   return (
     <AutoComplete
       suggestions={[
-        'Alligator',
-        'Bask',
-        'Crocodilian',
-        'Death Roll',
-        'Eggs',
-        'Jaws',
-        'Reptile',
-        'Solitary',
-        'Tail',
-        'Wetlands',
+        {
+          text: 'Alligator',
+        },
+        {
+          text: 'Bask',
+        },
+        {
+          text: 'Crocodilian',
+        },
+        {
+          text: 'Death Roll',
+        },
+        {
+          text: 'Eggs',
+        },
+        {
+          text: 'Jaws',
+        },
+        {
+          text: 'Reptile',
+        },
+        {
+          text: 'Solitary',
+        },
+        {
+          text: 'Tail',
+        },
+        {
+          text: 'Wetlands',
+        },
       ]}
     />
   );
