@@ -56,7 +56,7 @@ export const useAutoComplete = (
 
     setFilteredSuggestions(possibleSuggestions);
     setActiveSuggestionIndex(-1);
-    setShowSuggestions(true);
+    setShowSuggestions(possibleSuggestions.length > 0);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -75,7 +75,7 @@ export const useAutoComplete = (
         focusSuggestion(activeSuggestionIndex + 1);
       }
     } else if (e.key === 'ArrowUp') {
-      if (activeSuggestionIndex === 0) {
+      if (activeSuggestionIndex <= 0) {
         removeFocusSuggestion();
       } else {
         focusSuggestion(activeSuggestionIndex - 1);
