@@ -22,6 +22,7 @@ module.exports = {
     'prettier/prettier': 0,
     'import/prefer-default-export': 'off',
     'no-console': 'off',
+    'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
   },
   settings: {
     'import/resolver': {
